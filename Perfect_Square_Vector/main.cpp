@@ -20,13 +20,13 @@ int main(int argc, const char * argv[]) {
         int first = stoi(input1);
         getline(cin, input2);
         int second = stoi(input2);
-        Geometric_Vector gv = Geometric_Vector(first, second);
-        cout << "Out of " << gv.getSeries() << " integers." << endl;
-        cout << "The number of perfect squares in between those two integers and inclusively are: \n";
-        cout << "" << gv.getSize()<< endl;
-        cout << "The perfect squares are: " << endl;
-        for(int i =0; i<gv.getSize();i++){
-            cout << gv.getVector()[i] << endl;
+        Geometric_Vector gv= Geometric_Vector(first, second, true);
+        cout << "Out of " << gv.series << " integers." << endl;
+        cout << gv.msg << endl;
+        cout << "" << gv.v.size()<< endl;
+        cout << gv.msg1 << endl;
+        for(int i=0;i<gv.v.size();i++ ){
+            cout << gv.v[i] << endl;
         }
     } catch (exception e) {
         cout << e.what() << endl;

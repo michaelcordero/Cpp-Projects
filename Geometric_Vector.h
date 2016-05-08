@@ -21,59 +21,49 @@ class Geometric_Vector{
 public:
     //constructor
     Geometric_Vector(int a, int b);
+    Geometric_Vector(int a, int b, bool c);
     //prototype functions
-    void setSize(unsigned long s);
-    unsigned long getSize();
-    void setVector(vector<int> x);
-    vector<int> getVector();
-    void setSeries(int s);
-    int getSeries();
     
     //member variables
     int series;
-    unsigned long size;
     vector<int> v;
-    
+    string msg;
+    string msg1;
 };
 
 Geometric_Vector::Geometric_Vector(int a, int b){
     int max = fmax(a, b);
     int min = fmin(a, b);
-    vector<int> v;
-    int series = max-min+1;
+    vector<int> y;
+    int x = max-min+1;
     
-    for(int i=0;i<series;i++){
+    for(int i=0;i<x;i++){
         if(fmod(sqrt(min +i),1) == 0){
-            v.push_back(min+i);
+            y.push_back(min+i);
         }
     }
-    setSize(v.size());
-    setVector(v);
-    setSeries(series);
+    msg = "The number of perfect squares in between those two integers inclusively are: ";
+    msg1= "The perfect squares are: ";
+    series=x;
+    v=y;
 }
 
-void Geometric_Vector::setSize(unsigned long s){
-    this->size=s;
-}
-
-unsigned long Geometric_Vector::getSize(){
-    return size;
-}
-
-void Geometric_Vector::setVector(vector<int> x){
-    this->v = x;
-}
-
-vector<int> Geometric_Vector::getVector(){
-    return v;
-}
-
-void Geometric_Vector::setSeries(int s){
-    this->series=s;
-}
-
-int Geometric_Vector::getSeries(){
-    return series;
+Geometric_Vector::Geometric_Vector(int a, int b, bool c){
+    //bool c, placeholder flag when user wants to get the cube roots
+    int max = fmax(a, b);
+    int min = fmin(a, b);
+    vector<int> y;
+    int x = max-min+1;
+    
+    for(int i=0;i<x;i++){
+        if(fmod(cbrt(min +i),1) == 0){
+            y.push_back(min+i);
+        }
+    }
+    msg="The number of perfect cubes in between those two integers inclusively are:";
+    msg1= "The perfect cubes are: ";
+    series=x;
+    v=y;
 }
 
 #endif /* Geometric_Vector_h */
